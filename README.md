@@ -62,3 +62,32 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## UAS Project
+
+KostCloud adalah aplikasi UAS berbasis Laravel untuk manajemen properti kost. Fitur utama:
+
+- Autentikasi pengguna (login/register/logout)
+- CRUD properti kost (tambah, lihat detail, edit, hapus)
+- Dashboard statistik properti (total, harga rata-rata, harga terendah, harga tertinggi)
+- Halaman publik `welcome` untuk tamu dan dashboard untuk pengguna yang login
+- Integrasi database PostgreSQL/Supabase dan deployment Railway
+
+## Deploy ke Railway
+
+1. Pastikan `railway.json` tersedia dan `startCommand` diatur ke:
+   - `php artisan serve --host=0.0.0.0 --port=$PORT`
+2. Set environment variables di Railway:
+   - `APP_ENV=production`
+   - `APP_DEBUG=false`
+   - `APP_URL=https://<your-railway-domain>`
+   - `DB_CONNECTION=pgsql`
+   - `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD` sesuai Supabase
+3. Pastikan `DB_SCHEMA=public` dan `DB_SSL=true` jika perlu.
+4. Jalankan migration di Railway:
+   - `php artisan migrate`
+
+## Catatan Penting
+
+- Jangan commit file `.env` yang berisi kredensial production.
+- Gunakan `APP_DEBUG=false` pada environment produksi untuk keamanan.
