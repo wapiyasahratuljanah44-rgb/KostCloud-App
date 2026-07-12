@@ -11,7 +11,6 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    
     protected $fillable = [
         'name',
         'email',
@@ -23,13 +22,12 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
 
-    public function properties() 
+    public function properties()
     {
-        return $this->hasMany(Properties::class);
+        return $this->hasMany(Property::class);
     }
 }
