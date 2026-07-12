@@ -28,9 +28,9 @@
             <p class="text-blue-600 font-bold mt-4">Rp {{ number_format($prop->harga, 0, ',', '.') }} / bulan</p>
             
             <div class="mt-6 flex gap-2 flex-wrap">
-                <a href="{{ url('/kost/'.$prop->id) }}" class="text-sm text-blue-500 hover:underline">Lihat Detail</a>
-                <a href="{{ url('/kost/'.$prop->id.'/edit') }}" class="text-sm text-green-500 hover:underline">Edit</a>
-                <form action="{{ url('/kost/'.$prop->id) }}" method="POST" class="inline">
+                <a href="{{ route('kost.show', $prop->id) }}" class="text-sm text-blue-500 hover:underline">Lihat Detail</a>
+                <a href="{{ route('kost.edit', $prop->id) }}" class="text-sm text-green-500 hover:underline">Edit</a>
+                <form action="{{ route('kost.destroy', $prop->id) }}" method="POST" class="inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="text-sm text-red-500 hover:underline">Hapus</button>

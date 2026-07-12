@@ -20,8 +20,8 @@
     </div>
 
     <div class="mt-8 flex items-center gap-4">
-        <a href="{{ url('/kost/'.$property->id.'/edit') }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Edit</a>
-        <form action="{{ url('/kost/'.$property->id) }}" method="POST">
+        <a href="{{ route('kost.edit', $property->id) }}" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Edit</a>
+        <form action="{{ route('kost.destroy', $property->id) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Hapus</button>

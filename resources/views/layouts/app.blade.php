@@ -16,8 +16,10 @@
             <nav class="flex items-center gap-4">
                 @auth
                     <span class="text-sm text-gray-600">Halo, {{ auth()->user()->name }}</span>
+                    <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline">Dashboard</a>
+                    <a href="{{ route('kost.index') }}" class="text-blue-600 hover:underline">Daftar Kost</a>
                     <a href="{{ route('profile') }}" class="text-blue-600 hover:underline">Profil</a>
-                    <a href="{{ url('/kost/create') }}" class="text-blue-600 hover:underline">Tambah Kost</a>
+                    <a href="{{ route('kost.create') }}" class="text-blue-600 hover:underline">Tambah Kost</a>
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
                         <button type="submit" class="text-red-600 hover:underline">Logout</button>

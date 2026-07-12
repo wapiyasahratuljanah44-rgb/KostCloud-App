@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePropertiesTable extends Migration
+class AddFieldsToPropertiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreatePropertiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('properties', function (Blueprint $table) {
-            $table->id();
+        Schema::table('properties', function (Blueprint $table) {
             $table->string('name');
             $table->text('address');
             $table->decimal('harga', 12, 2);
+
             $table->foreignId('user_id')
                   ->constrained()
                   ->cascadeOnDelete();
-            $table->timestamps();
         });
     }
 
@@ -32,6 +31,9 @@ class CreatePropertiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('properties');
+        Schema::table('properties', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropColumn(['name', 'address', 'harga', 'user_id']);
+        });
     }
 }

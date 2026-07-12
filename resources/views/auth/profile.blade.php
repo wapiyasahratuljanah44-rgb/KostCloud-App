@@ -10,7 +10,7 @@
         </div>
     @endif
 
-    <form action="{{ url('/profile') }}" method="POST" class="space-y-4">
+    <form action="{{ route('profile') }}" method="POST" class="space-y-4">
         @csrf
         @method('PUT')
 
@@ -36,7 +36,7 @@
 
         <div class="flex items-center gap-3">
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Simpan Profil</button>
-            <a href="{{ url('/dashboard') }}" class="text-gray-600 hover:underline">Batal</a>
+            <a href="{{ route('dashboard') }}" class="text-gray-600 hover:underline">Batal</a>
         </div>
     </form>
 </div>

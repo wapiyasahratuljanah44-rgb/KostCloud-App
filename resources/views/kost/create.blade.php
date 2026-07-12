@@ -14,7 +14,7 @@
         </div>
     @endif
 
-    <form action="/kost/store" method="POST" class="space-y-4">
+    <form action="{{ route('kost.store') }}" method="POST" class="space-y-4">
         @csrf
         <div>
             <label class="block text-sm font-medium text-gray-700">Nama Kost</label>

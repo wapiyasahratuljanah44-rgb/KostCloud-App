@@ -77,6 +77,7 @@ KostCloud adalah aplikasi UAS berbasis Laravel untuk manajemen properti kost. Fi
 
 1. Pastikan `railway.json` tersedia dan `startCommand` diatur ke:
    - `php artisan serve --host=0.0.0.0 --port=$PORT`
+   - Pastikan environment Railway menggunakan PHP `8.2` atau lebih baru.
 2. Set environment variables di Railway:
    - `APP_ENV=production`
    - `APP_DEBUG=false`
@@ -89,5 +90,6 @@ KostCloud adalah aplikasi UAS berbasis Laravel untuk manajemen properti kost. Fi
 
 ## Catatan Penting
 
+- Local PHP dan deployment harus menggunakan PHP `8.2` atau lebih baru sesuai dependencies Laravel.
 - Jangan commit file `.env` yang berisi kredensial production.
 - Gunakan `APP_DEBUG=false` pada environment produksi untuk keamanan.
