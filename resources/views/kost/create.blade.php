@@ -1,4 +1,5 @@
 <form action="/store" method="POST">
+    @if(session('success'))<p style="color:green">{{ session('success') }}</p>@endif
     @csrf
     <input type="text" name="name" placeholder="Nama Kost" required>
     <input type="text" name="address" placeholder="Alamat" required>
