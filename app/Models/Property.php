@@ -5,9 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Property extends Model
+class Properties extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'harga'];
+    protected $fillable = ['name', 'address', 'harga', 'user_id'];
+
+    public function user() 
+    {
+        return $this->belongsTo(User::class);
+    }
 }
