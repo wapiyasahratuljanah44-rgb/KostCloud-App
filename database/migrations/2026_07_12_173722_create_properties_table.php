@@ -6,30 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePropertiesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
+
             $table->string('name');
             $table->text('address');
             $table->decimal('harga', 12, 2);
+
             $table->foreignId('user_id')
-                  ->constrained()
-                  ->cascadeOnDelete();
+                ->constrained()
+                ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('properties');

@@ -1,37 +1,104 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="bg-white rounded-xl shadow p-8">
-    <h1 class="text-2xl font-bold mb-6">Tambah Kost Baru</h1>
 
-    @if($errors->any())
-        <div class="bg-red-100 border border-red-300 text-red-700 p-4 rounded mb-6">
-            <ul class="list-disc list-inside">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+<div class="max-w-3xl mx-auto">
 
-    <form action="{{ route('kost.store') }}" method="POST" class="space-y-4">
-        @csrf
-        <div>
-            <label class="block text-sm font-medium text-gray-700">Nama Kost</label>
-            <input type="text" name="name" placeholder="Nama Kost" required class="w-full rounded border px-3 py-2" />
-        </div>
-        <div>
-            <label class="block text-sm font-medium text-gray-700">Alamat</label>
-            <input type="text" name="address" placeholder="Alamat" required class="w-full rounded border px-3 py-2" />
-        </div>
-        <div>
-            <label class="block text-sm font-medium text-gray-700">Harga</label>
-            <input type="number" name="harga" placeholder="Harga" required class="w-full rounded border px-3 py-2" />
-        </div>
-        <div class="flex items-center gap-3">
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Simpan Properti</button>
-            <a href="{{ url('/') }}" class="text-gray-600 hover:underline">Batal</a>
-        </div>
-    </form>
+    <div class="bg-white shadow-lg rounded-xl p-8">
+
+        <h1 class="text-2xl font-bold mb-6 text-blue-700">
+            Tambah Data Kost
+        </h1>
+
+        @if($errors->any())
+
+            <div class="bg-red-100 border border-red-300 text-red-700 p-4 rounded mb-5">
+
+                <ul class="list-disc ml-5">
+
+                    @foreach($errors->all() as $error)
+
+                        <li>{{ $error }}</li>
+
+                    @endforeach
+
+                </ul>
+
+            </div>
+
+        @endif
+
+        <form action="{{ route('properties.store') }}" method="POST">
+
+            @csrf
+
+            <div class="mb-4">
+
+                <label class="block font-semibold mb-2">
+                    Nama Kost
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500"
+                    value="{{ old('name') }}"
+                >
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="block font-semibold mb-2">
+                    Alamat
+                </label>
+
+                <textarea
+                    name="address"
+                    rows="4"
+                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500"
+                >{{ old('address') }}</textarea>
+
+            </div>
+
+            <div class="mb-6">
+
+                <label class="block font-semibold mb-2">
+                    Harga
+                </label>
+
+                <input
+                    type="number"
+                    name="harga"
+                    class="w-full border rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500"
+                    value="{{ old('harga') }}"
+                >
+
+            </div>
+
+            <div class="flex gap-3">
+
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+
+                    Simpan
+
+                </button>
+
+                <a
+                    href="{{ route('dashboard') }}"
+                    class="bg-gray-400 hover:bg-gray-500 text-white px-6 py-3 rounded-lg">
+
+                    Batal
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
+
 @endsection

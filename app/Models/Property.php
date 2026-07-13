@@ -9,9 +9,28 @@ class Property extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'harga', 'user_id'];
+    // Kolom-kolom yang diizinkan untuk diisi massal (Mass Assignment)
+    protected $fillable = [
+        'name', 
+        'address', 
+        'description', 
+        'harga', 
+        'phone', 
+        'image'
+    ];
 
-    public function user()
+    /**
+     * Relasi: Satu kosan punya BANYAK kamar
+     */
+    public function rooms() 
+    {
+        return $this->hasMany(Room::class);
+    }
+
+    /**
+     * Relasi: Properti ini dimiliki oleh seorang User (Owner)
+     */
+    public function user() 
     {
         return $this->belongsTo(User::class);
     }
